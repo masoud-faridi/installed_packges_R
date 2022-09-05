@@ -1,29 +1,20 @@
-# update indices
-sudo apt update -qq
-# install two helper packages we need
-sudo apt install --no-install-recommends software-properties-common dirmngr
-# add the signing key (by Michael Rutter) for these repos
-# To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc 
-# Fingerprint: E298A3A825C0D65DFD57CBB651716619E084DAB9
-wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
-sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 
+docker exec -u root -t -i efcf53a04844bfbb92270b8423d6caf83602451de98af673fac65986c1896771 /bin/bash
+docker exec -u root -t -i 90829e99b0d786347966e157b16cf0b9babed232b9a84dd77b568ee311e284e5 /bin/bash
 
-
-Here we use lsb_release -cs to access which Ubuntu flavor you run: one of “jammy”, impish”, “focal”, “bionic”, …
-
-Then run
-
-sudo apt install --no-install-recommends r-base
-
-
-Get 5000+ CRAN Packages
-Run this command (as root or by prefixing sudo) to add the current R 4.0 or later ‘c2d4u’ repository:
-
+sudo apt update
+sudo apt install software-properties-common
+sudo apt update
 sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
-
-
-#bsts
-
 sudo apt install r-cran-bsts
+
+Boom  BoomSpikeSlab  bsts  xts  zoo
+
+library(Boom, lib.loc = '/usr/lib/R/site-library')
+library(BoomSpikeSlab, lib.loc = '/usr/lib/R/site-library')
+
+library(zoo, lib.loc = '/usr/lib/R/site-library')
+library(xts, lib.loc = '/usr/lib/R/site-library')
+library(bsts, lib.loc = '/usr/lib/R/site-library')
+/usr/lib/R/site-library
+.libPaths()
